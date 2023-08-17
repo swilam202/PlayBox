@@ -7,7 +7,6 @@ void main() {
   runApp(const ReelSwipe());
 }
 
-
 class ReelSwipe extends StatelessWidget {
   const ReelSwipe({super.key});
 
@@ -21,7 +20,6 @@ class ReelSwipe extends StatelessWidget {
 
 
 
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -30,20 +28,84 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-//String url = 'https://rr2---sn-hgn7rn7k.googlevideo.com/videoplayback?expire=1692216256&ei=YNfcZMibIMOXx_APmI6NuAo&ip=94.156.14.29&id=o-AArSfcRphxa2vUpD9WfhaaU8bG2Peu-Y7jTF-QGhPNLF&itag=18&source=youtube&requiressl=yes&spc=UWF9f8-zkXfVs3W4z4PWGUs3GxotxTI&vprv=1&svpuc=1&mime=video%2Fmp4&gir=yes&clen=5035309&ratebypass=yes&dur=92.647&lmt=1687445655041835&fexp=24007246,24350018,24363392,51000011&beids=24350018&c=ANDROID&txp=5319224&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRQIhAO759axlKx-XZ1uiSnl9vL3uR4Pn8oFDvUMaDMdhhub6AiB-LHPcXu7gUpIQ0IoSiyIEs_C2iTP5Bc89IkeTn2GQtg%3D%3D&title=Travel%20to%20Jordan%20%7C%20Cinematic%20Video&rm=sn-4g5ekd7s&req_id=5d3e5b5bf708a3ee&ipbypass=yes&redirect_counter=2&cm2rm=sn-xupn5a5uxbt-j5p67l&cms_redirect=yes&cmsv=e&mh=_p&mip=154.237.253.182&mm=29&mn=sn-hgn7rn7k&ms=rdu&mt=1692194463&mv=m&mvi=2&pl=20&lsparams=ipbypass,mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRAIgUSRmT-Su-xf8Dh_HEcMCbWpfm2-L3ixmmPvtqcC85eMCIDZqzLmBjvnI00TmF_W7OIo0J4_0BxjyFsj6kNLtx9u8';
+ // String url =
+ //     'https://rr2---sn-hgn7rn7k.googlevideo.com/videoplayback?expire=1692216256&ei=YNfcZMibIMOXx_APmI6NuAo&ip=94.156.14.29&id=o-AArSfcRphxa2vUpD9WfhaaU8bG2Peu-Y7jTF-QGhPNLF&itag=18&source=youtube&requiressl=yes&spc=UWF9f8-zkXfVs3W4z4PWGUs3GxotxTI&vprv=1&svpuc=1&mime=video%2Fmp4&gir=yes&clen=5035309&ratebypass=yes&dur=92.647&lmt=1687445655041835&fexp=24007246,24350018,24363392,51000011&beids=24350018&c=ANDROID&txp=5319224&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRQIhAO759axlKx-XZ1uiSnl9vL3uR4Pn8oFDvUMaDMdhhub6AiB-LHPcXu7gUpIQ0IoSiyIEs_C2iTP5Bc89IkeTn2GQtg%3D%3D&title=Travel%20to%20Jordan%20%7C%20Cinematic%20Video&rm=sn-4g5ekd7s&req_id=5d3e5b5bf708a3ee&ipbypass=yes&redirect_counter=2&cm2rm=sn-xupn5a5uxbt-j5p67l&cms_redirect=yes&cmsv=e&mh=_p&mip=154.237.253.182&mm=29&mn=sn-hgn7rn7k&ms=rdu&mt=1692194463&mv=m&mvi=2&pl=20&lsparams=ipbypass,mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRAIgUSRmT-Su-xf8Dh_HEcMCbWpfm2-L3ixmmPvtqcC85eMCIDZqzLmBjvnI00TmF_W7OIo0J4_0BxjyFsj6kNLtx9u8';
+
+  late VideoPlayerController controller;
+  late ChewieController chewieController;
+  @override
+  void initState() {
+    super.initState();
+    controller = VideoPlayerController.
+      ..initialize().then((_) {
+        setState(() {});
+      });
+
+    chewieController = ChewieController(
+        videoPlayerController: controller,
+        autoPlay: true,
+        looping: true);
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: SizedBox(
+          height: 350,
+          child: AspectRatio(
+            aspectRatio: controller.value.aspectRatio,
+            child: Chewie(controller: chewieController),
+          ),
+        )
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
 
   late VideoPlayerController videoPlayerController;
-  late ChewieController chewieController;
+ // late ChewieController chewieController;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-      videoPlayerController = VideoPlayerController.asset('assets\test.mp4');
-      chewieController = ChewieController(videoPlayerController: videoPlayerController);
+    videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(url))..initialize().then((_) {
+      print('init++++++++++++++++++++++++++++++++++++');
+setState(() {
+
+});
+    });
+    // chewieController = ChewieController(
+    //     videoPlayerController: videoPlayerController,
+    //     autoPlay: true,
+    //     looping: true);
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -51,13 +113,13 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(
-              height: 200,
-              child: AspectRatio(
-                aspectRatio: 16/5,
-              child: Chewie(controller: chewieController),
-              ),
-            )
+        videoPlayerController.value.isInitialized
+        ? AspectRatio(
+        aspectRatio: videoPlayerController.value.aspectRatio,
+          child: VideoPlayer(videoPlayerController),
+        )
+              : Container(),
+
           ],
         ),
       ),
@@ -66,7 +128,6 @@ class _HomePageState extends State<HomePage> {
 }
 
 
-/*
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
