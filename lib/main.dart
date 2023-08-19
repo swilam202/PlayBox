@@ -1,6 +1,8 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:reelswipe/features/home%20screen/presentation/manager/home%20page%20cubit.dart';
 import 'package:video_player/video_player.dart';
 
 import 'features/splash screen/presentation/views/splash page.dart';
@@ -14,12 +16,14 @@ class ReelSwipe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.black87,
-        brightness: Brightness.dark
+    return BlocProvider<HomePageCubit>(create: (context)=>HomePageCubit(),
+      child:  MaterialApp(
+        theme: ThemeData(
+            scaffoldBackgroundColor: Colors.black87,
+            brightness: Brightness.dark
+        ),
+        home: SplashPage(),
       ),
-      home: SplashPage(),
     );
   }
 }

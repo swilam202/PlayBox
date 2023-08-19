@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/get file.dart';
+import '../../manager/home page cubit.dart';
 
 
 class FailureState extends StatelessWidget {
@@ -14,8 +16,8 @@ class FailureState extends StatelessWidget {
           children: [
             Text('Oops! something went wrong please try again',style: TextStyle(fontSize: 22,),textAlign: TextAlign.center,),
             SizedBox(height: 20,),
-            ElevatedButton(onPressed: ()async{
-              await getFile();
+            ElevatedButton(onPressed: (){
+              BlocProvider.of<HomePageCubit>(context).loadVideo();
             }, child: Text('Try again!'),),
           ],
         )

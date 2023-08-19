@@ -12,9 +12,7 @@ class InitialState extends StatelessWidget {
     return Center(
       child: TextButton(
 
-        onPressed: ()async{
-          onPressed;
-        },
+        onPressed: onPressed,
         child: Column(
           mainAxisSize: MainAxisSize.min,
 

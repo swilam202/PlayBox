@@ -25,8 +25,11 @@ class _SuccessStateState extends State<SuccessState> {
     // TODO: implement initState
     super.initState();
 
-    videoPlayerController = VideoPlayerController.file(File(widget.path))..initialize().then((_){
-      chewieController = ChewieController(videoPlayerController: videoPlayerController);
+    videoPlayerController =  VideoPlayerController.file(File(widget.path))..initialize().then((_){
+      chewieController =  ChewieController(videoPlayerController: videoPlayerController,autoPlay: true,aspectRatio: videoPlayerController.value.aspectRatio,);
+      setState(() {
+
+      });
     });
   }
 
@@ -36,13 +39,10 @@ class _SuccessStateState extends State<SuccessState> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SizedBox(
-          height: 350,
-          child: AspectRatio(
-            aspectRatio: 2.5/1.5, //videoPlayerController.value.aspectRatio,
-            child: Chewie(controller: chewieController),
-          ),
-        ),
+      child: videoPlayerController.value.isInitialized ? AspectRatio(
+        aspectRatio: 2.5/1.5, //videoPlayerController.value.aspectRatio,
+        child: Chewie(controller: chewieController),
+      ):SizedBox(),
     );
   }
 }
