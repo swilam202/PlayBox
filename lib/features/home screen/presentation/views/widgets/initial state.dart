@@ -3,16 +3,17 @@ import 'package:reelswipe/core/utils/get%20file.dart';
 
 
 
-class InitialHomePage extends StatelessWidget {
-  const InitialHomePage({super.key});
+class InitialState extends StatelessWidget {
+  const InitialState({super.key,required this.onPressed});
 
+  final Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Center(
       child: TextButton(
 
         onPressed: ()async{
-          await getFile();
+          onPressed;
         },
         child: Column(
           mainAxisSize: MainAxisSize.min,
