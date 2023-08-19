@@ -23,7 +23,7 @@ class InitialState extends StatelessWidget {
               height: 180,
               child: AspectRatio(
                 aspectRatio: 2.5 / 5,
-                child: Image.asset('assets/images/folder icon.png'),
+                child: Image.asset('assets/images/PlayBox.png'),
               ),
             ),
             const Text('Pick video from device',style: TextStyle(fontSize: 18,color: Colors.white),)
