@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:reelswipe/features/home%20screen/presentation/views/home%20page.dart';
-import 'package:reelswipe/features/splash%20screen/presentation/views/widgets/splash%20body.dart';
+
+import '../../../home screen/presentation/views/home page.dart';
+import 'widgets/splash body.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -9,8 +10,8 @@ class SplashPage extends StatefulWidget {
   State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateMixin{
-
+class _SplashPageState extends State<SplashPage>
+    with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<double> animation;
 
@@ -19,15 +20,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     // TODO: implement initState
     super.initState();
     initializeAnimation();
-
   }
-
-
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -38,14 +31,16 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     );
   }
 
-
-  initializeAnimation(){
-    animationController = AnimationController(vsync: this,duration: const Duration(seconds: 3),);
-    animation = CurvedAnimation(parent: animationController, curve: Curves.bounceOut);
+  initializeAnimation() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    );
+    animation =
+        CurvedAnimation(parent: animationController, curve: Curves.bounceOut);
     animationController.forward().then((_) {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>HomePage()));
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
     });
   }
 }
-
-

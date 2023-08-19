@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:reelswipe/core/utils/get%20file.dart';
-
-
 
 class InitialState extends StatelessWidget {
-  const InitialState({super.key,required this.onPressed});
+  const InitialState({super.key, required this.onPressed});
 
   final Function()? onPressed;
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: TextButton(
-
         onPressed: onPressed,
         child: Column(
           mainAxisSize: MainAxisSize.min,
-
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -26,7 +22,13 @@ class InitialState extends StatelessWidget {
                 child: Image.asset('assets/images/PlayBox.png'),
               ),
             ),
-            const Text('Pick video from device',style: TextStyle(fontSize: 18,color: Colors.white),)
+            const Text(
+              'Pick video from device',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+              ),
+            ),
           ],
         ),
       ),

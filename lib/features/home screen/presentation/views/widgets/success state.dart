@@ -25,10 +25,11 @@ class _SuccessStateState extends State<SuccessState> {
     videoPlayerController = VideoPlayerController.file(File(widget.path))
       ..initialize().then((_) {
         chewieController = ChewieController(
-            videoPlayerController: videoPlayerController,
-            autoPlay: true,
-            aspectRatio: videoPlayerController.value.aspectRatio,
-            fullScreenByDefault: true,);
+          videoPlayerController: videoPlayerController,
+          autoPlay: true,
+          aspectRatio: videoPlayerController.value.aspectRatio,
+          fullScreenByDefault: true,
+        );
         setState(() {});
       });
   }
@@ -39,10 +40,9 @@ class _SuccessStateState extends State<SuccessState> {
       child: videoPlayerController.value.isInitialized
           ? AspectRatio(
               aspectRatio: videoPlayerController.value.aspectRatio,
-              //videoPlayerController.value.aspectRatio,
               child: Chewie(controller: chewieController),
             )
-          : Center(
+          : const Center(
               child: CircularProgressIndicator(),
             ),
     );
